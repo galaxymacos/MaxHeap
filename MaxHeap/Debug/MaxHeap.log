@@ -1,0 +1,3 @@
+﻿  Source.cpp
+c:\users\galax\source\repos\maxheap\maxheap\source.cpp(98): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  MaxHeap.vcxproj -> C:\Users\galax\source\repos\MaxHeap\Debug\MaxHeap.exe
