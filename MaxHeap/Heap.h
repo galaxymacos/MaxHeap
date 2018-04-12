@@ -71,7 +71,7 @@ public:
 		count_ = size;
 		for(int i = count_/2;i>=1;i--)
 		{
-			shift_down(data_[i]);
+			shift_down(i);	// attention: shift_down(+the position of the element(not the element itself))
 		}
 	}
 
