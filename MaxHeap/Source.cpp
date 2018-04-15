@@ -59,56 +59,41 @@ void heap_sort3(T arr[],int n)
 }
 
 template<class T>
+void __shift_down(T arr[],int n,int k)	// n = size_of_the_array, k = the position of the element you want to shift down
+{
+	while (k * 2 + 1<n)
+	{
+		int j = k * 2 + 1;
+		if (j + 1 < n&&arr[j + 1]>arr[j])
+		{
+			j++;
+		}
+		if (arr[j]>arr[k])
+		{
+			swap(arr[j], arr[k]);
+			k = j;
+		}
+		else
+		{
+			break;
+		}
+	}
+}
+
+template<class T>
 void heap_sort4(T arr[],int n)
 {
 	// heapify
 	for(int i = (n-1)/2;i>=0;i--)
 	{
-		int k = i;
-		while(k*2+1<n)
-		{
-			int j = k * 2 + 1;
-			if (j + 1 < n&&arr[j+1]>arr[j])
-			{
-				j++;
-			}
-			if(arr[j]>arr[k])
-			{
-				swap(arr[j], arr[k]);
-				k = j;
-			}
-			else
-			{
-				break;
-			}
-		}
+		__shift_down(arr, n, i);
 	}
 
 	
 	for(int i = n-1;i>0;i--)
 	{
 		swap(arr[0], arr[i]);
-		T unsorted = arr[0];
-		int j = 0;
-		
-		while(2*j+1<i)
-		{
-			int k = 2 * j + 1;
-			if(arr[k+1]>arr[k]&&k+1<i)
-			{
-				k++;
-			}
-			if(arr[k]>unsorted)
-			{
-				arr[j] = arr[k];
-				j = k;
-			}else
-			{
-				break;
-			}
-			
-		}
-		arr[j] = unsorted;
+		__shift_down(arr, i, 0);
 	}
 }
 
